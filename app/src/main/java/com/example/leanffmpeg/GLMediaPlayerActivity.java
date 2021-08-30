@@ -149,6 +149,7 @@ public class GLMediaPlayerActivity extends AppCompatActivity implements GLSurfac
 
     @Override
     public void onDrawFrame(GL10 gl10) {
+        Log.d(TAG, "onDrawFrame");
         FFMediaPlayer.native_OnDrawFrame(VIDEO_GL_RENDER);
     }
 
@@ -168,6 +169,7 @@ public class GLMediaPlayerActivity extends AppCompatActivity implements GLSurfac
                         break;
                     case MSG_REQUEST_RENDER:
                         mGLSurfaceView.requestRender();
+                        Log.d(TAG, "requestRender");
                         break;
                     case MSG_DECODING_TIME:
                         if(!mIsTouch)
@@ -206,11 +208,11 @@ public class GLMediaPlayerActivity extends AppCompatActivity implements GLSurfac
 
     @Override
     public void onGesture(int xRotateAngle, int yRotateAngle, float scale) {
-        // FFMediaPlayer.native_SetGesture(VIDEO_GL_RENDER, xRotateAngle, yRotateAngle, scale);
+         FFMediaPlayer.native_SetGesture(VIDEO_GL_RENDER, xRotateAngle, yRotateAngle, scale);
     }
 
     @Override
     public void onTouchLoc(float touchX, float touchY) {
-        //FFMediaPlayer.native_SetTouchLoc(VIDEO_GL_RENDER, touchX, touchY);
+        FFMediaPlayer.native_SetTouchLoc(VIDEO_GL_RENDER, touchX, touchY);
     }
 }

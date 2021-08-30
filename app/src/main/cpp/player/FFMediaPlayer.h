@@ -23,8 +23,22 @@ public:
     ~FFMediaPlayer(){};
 
     void Init(JNIEnv *jniEnv, jobject obj, char *url, int renderType, jobject surface);
+    void UnInit();
+
+    void Play();
+    void Pause();
+    void Stop();
+    void SeekToPosition(float position);
+    long GetMediaParams(int paramType);
 
 private:
+    JNIEnv *GetJNIEnv(bool *isAttach);
+
+    jobject GetJavaObj();
+    JavaVM *GetJavaVM();
+
+    static void PostMessage(void *context, int msgType, float msgCode);
+
     JavaVM *m_JavaVM = nullptr;
     jobject m_JavaObj = nullptr;
 

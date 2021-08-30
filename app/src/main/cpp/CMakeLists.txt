@@ -28,8 +28,8 @@ file(GLOB src-files
         ${CMAKE_SOURCE_DIR}/player/decoder/*.cpp
         ${CMAKE_SOURCE_DIR}/player/render/video/*.cpp
         ${CMAKE_SOURCE_DIR}/player/render/audio/*.cpp
+        ${CMAKE_SOURCE_DIR}/recorder/SingleVideoRecorder.cpp
         )
-
 
 add_library(${libname}
              SHARED

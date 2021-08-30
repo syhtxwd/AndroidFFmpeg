@@ -1,7 +1,8 @@
 #include <jni.h>
 #include <string>
 #include <FFMediaPlayer.h>
-
+#include <render/video/VideoGLRender.h>
+//#include <render/audio/OpenSLRender.h>
 #include <cstdio>
 #include <cstring>
 
@@ -61,14 +62,22 @@ JNIEXPORT jlong JNICALL Java_com_example_leanffmpeg_media_FFMediaPlayer_native_1
 JNIEXPORT void JNICALL Java_com_example_leanffmpeg_media_FFMediaPlayer_native_1Play
         (JNIEnv *env, jobject obj, jlong player_handle)
 {
-
+    if(player_handle != 0)
+    {
+        FFMediaPlayer *ffMediaPlayer = reinterpret_cast<FFMediaPlayer *>(player_handle);
+        ffMediaPlayer->Play();
+    }
 
 }
 
 JNIEXPORT void JNICALL
 Java_com_example_leanffmpeg_media_FFMediaPlayer_native_1SeekToPosition(JNIEnv *env, jobject thiz,
                                                                          jlong player_handle, jfloat position) {
-
+    if(player_handle != 0)
+    {
+        FFMediaPlayer *ffMediaPlayer = reinterpret_cast<FFMediaPlayer *>(player_handle);
+        ffMediaPlayer->SeekToPosition(position);
+    }
 }
 
 JNIEXPORT void JNICALL Java_com_example_leanffmpeg_media_FFMediaPlayer_native_1Pause
@@ -88,7 +97,11 @@ JNIEXPORT void JNICALL Java_com_example_leanffmpeg_media_FFMediaPlayer_native_1S
 JNIEXPORT void JNICALL Java_com_example_leanffmpeg_media_FFMediaPlayer_native_1UnInit
         (JNIEnv *env, jobject obj, jlong player_handle)
 {
-
+    if(player_handle != 0)
+    {
+        FFMediaPlayer *ffMediaPlayer = reinterpret_cast<FFMediaPlayer *>(player_handle);
+        ffMediaPlayer->UnInit();
+    }
 }
 
 JNIEXPORT jlong JNICALL
@@ -97,6 +110,11 @@ Java_com_example_leanffmpeg_media_FFMediaPlayer_native_1GetMediaParams(JNIEnv *e
                                                                          jint param_type)
 {
     long value = 0;
+    if(player_handle != 0)
+    {
+        FFMediaPlayer *ffMediaPlayer = reinterpret_cast<FFMediaPlayer *>(player_handle);
+        value = ffMediaPlayer->GetMediaParams(param_type);
+    }
     return value;
 }
 
@@ -104,7 +122,20 @@ JNIEXPORT void JNICALL
 Java_com_example_leanffmpeg_media_FFMediaPlayer_native_1OnSurfaceCreated(JNIEnv *env,
                                                                            jclass clazz,
                                                                            jint render_type) {
-
+    switch (render_type)
+    {
+        case VIDEO_GL_RENDER:
+            VideoGLRender::GetInstance()->OnSurfaceCreated();
+            break;
+//        case AUDIO_GL_RENDER:
+//            AudioGLRender::GetInstance()->OnSurfaceCreated();
+//            break;
+//        case VR_3D_GL_RENDER:
+//            VRGLRender::GetInstance()->OnSurfaceCreated();
+//            break;
+        default:
+            break;
+    }
 }
 
 JNIEXPORT void JNICALL
@@ -112,14 +143,83 @@ Java_com_example_leanffmpeg_media_FFMediaPlayer_native_1OnSurfaceChanged(JNIEnv 
                                                                            jint render_type,
                                                                            jint width,
                                                                            jint height) {
-
+    switch (render_type)
+    {
+        case VIDEO_GL_RENDER:
+            VideoGLRender::GetInstance()->OnSurfaceChanged(width, height);
+            break;
+//        case AUDIO_GL_RENDER:
+//            AudioGLRender::GetInstance()->OnSurfaceChanged(width, height);
+//            break;
+//        case VR_3D_GL_RENDER:
+//            VRGLRender::GetInstance()->OnSurfaceChanged(width, height);
+//            break;
+        default:
+            break;
+    }
 }
 
 JNIEXPORT void JNICALL
 Java_com_example_leanffmpeg_media_FFMediaPlayer_native_1OnDrawFrame(JNIEnv *env, jclass clazz, jint render_type) {
-
+    switch (render_type)
+    {
+        case VIDEO_GL_RENDER:
+            VideoGLRender::GetInstance()->OnDrawFrame();
+            break;
+//        case AUDIO_GL_RENDER:
+//            AudioGLRender::GetInstance()->OnDrawFrame();
+//            break;
+//        case VR_3D_GL_RENDER:
+//            VRGLRender::GetInstance()->OnDrawFrame();
+//            break;
+        default:
+            break;
+    }
 }
 
+
+JNIEXPORT void JNICALL
+Java_com_example_leanffmpeg_media_FFMediaPlayer_native_1SetGesture(JNIEnv *env, jclass clazz,
+                                                                     jint   render_type,
+                                                                     jfloat x_rotate_angle,
+                                                                     jfloat y_rotate_angle,
+                                                                     jfloat scale) {
+    switch (render_type)
+    {
+        case VIDEO_GL_RENDER:
+            VideoGLRender::GetInstance()->UpdateMVPMatrix(x_rotate_angle, y_rotate_angle, scale, scale);
+            break;
+//        case AUDIO_GL_RENDER:
+//            AudioGLRender::GetInstance()->UpdateMVPMatrix(x_rotate_angle, y_rotate_angle, scale, scale);
+//            break;
+//        case VR_3D_GL_RENDER:
+//            VRGLRender::GetInstance()->UpdateMVPMatrix(x_rotate_angle, y_rotate_angle, scale, scale);
+//            break;
+        default:
+            break;
+    }
+}
+
+JNIEXPORT void JNICALL
+Java_com_example_leanffmpeg_media_FFMediaPlayer_native_1SetTouchLoc(JNIEnv *env, jclass clazz,
+                                                                      jint   render_type,
+                                                                      jfloat touch_x,
+                                                                      jfloat touch_y) {
+    switch (render_type)
+    {
+        case VIDEO_GL_RENDER:
+            VideoGLRender::GetInstance()->SetTouchLoc(touch_x, touch_y);
+            break;
+//        case AUDIO_GL_RENDER:
+//            AudioGLRender::GetInstance()->SetTouchLoc(touch_x, touch_y);
+//            break;
+//        case VR_3D_GL_RENDER:
+//            VRGLRender::GetInstance()->SetTouchLoc(touch_x, touch_y);
+//            break;
+        default:
+            break;
+    }
+}
 
 #ifdef __cplusplus
 }

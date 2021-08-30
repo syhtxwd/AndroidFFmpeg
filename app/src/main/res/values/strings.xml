@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LeanFFmpeg</string>
+    <string name="app_name">SevenFlowers</string>
     <string name="select_sample">Select FFmpeg Example</string>
     <string name="tip">点击右上角的框进行选择\nClick the box in the upper right corner to select</string>
     <string name="action_resolutions">Resolutions</string>

@@ -94,8 +94,8 @@ public class FFMediaPlayer {
     public static native void native_OnSurfaceChanged(int renderType, int width, int height);
     public static native void native_OnDrawFrame(int renderType);
     //update MVP matrix
-    //public static native void native_SetGesture(int renderType, float xRotateAngle, float yRotateAngle, float scale);
-    //public static native void native_SetTouchLoc(int renderType, float touchX, float touchY);
+    public static native void native_SetGesture(int renderType, float xRotateAngle, float yRotateAngle, float scale);
+    public static native void native_SetTouchLoc(int renderType, float touchX, float touchY);
 
     public interface EventCallback {
         void onPlayerEvent(int msgType, float msgValue);
