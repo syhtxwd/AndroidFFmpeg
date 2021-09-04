@@ -16,7 +16,7 @@
 
 - ### 解码流程图
 
-    ![解码流程图](./doc/便解码流程图/decoder.png)
+    ![解码流程图](./doc/编解码流程图/decoder.png)
 
 
 - ### opensl es基本流程
