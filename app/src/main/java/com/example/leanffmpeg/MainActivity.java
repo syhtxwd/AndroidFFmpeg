@@ -130,9 +130,6 @@ public class MainActivity extends AppCompatActivity {
 //                    case FF_OPENGLES_AUDIO_VISUAL_EXAMPLE:
 //                        startActivity(new Intent(MainActivity.this, AudioVisualMediaPlayerActivity.class));
 //                        break;
-//                    case FF_OPENGLES_VR_EXAMPLE:
-//                        startActivity(new Intent(MainActivity.this, VRMediaPlayerActivity.class));
-//                        break;
 //                    case FF_X264_VIDEO_RECORDER:
 //                        startActivity(new Intent(MainActivity.this, VideoRecorderActivity.class));
 //                        break;
