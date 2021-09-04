@@ -11,14 +11,14 @@
 
 ### 整理层次图
 
-    ![解码流程图](./doc/解码流程图.png)
+    ![解码流程图](./doc/整体层次图/entirety.png)
 
 
 ### 解码流程图
 
-    ![解码流程图](./doc/解码流程图.png)
+    ![解码流程图](./doc/便解码流程图/decoder.png)
 
 
 ### opensl es基本流程
 
-    ![opensl_es](./doc/opensl_es基本流程.png)
+    ![opensl_es](./doc/其他/opensl_es.png)
