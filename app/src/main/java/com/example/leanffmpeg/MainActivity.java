@@ -38,22 +38,14 @@ public class MainActivity extends AppCompatActivity {
     private static  final String [] EXAMPLE_LIST = {
             "FFmpeg + ANativeWindow player",
             "FFmpeg + OpenGL ES player",
-            "FFmpeg + OpenSL ES visual audio player",
-            "FFmpeg + OpenGL ES VR player",
-            "FFmpeg + single video recorder",
-            "FFmpeg + single audio recorder",
             "FFmpeg + AV recorder",
             "FFmpeg + stream media player"
     };
 
     private static final int FF_ANATIVE_WINDOWS_EXAMPLE = 0;
     private static final int FF_OPENGLES_EXAMPLE = 1;
-    private static final int FF_OPENGLES_AUDIO_VISUAL_EXAMPLE = 2;
-    private static final int FF_OPENGLES_VR_EXAMPLE = 3;
-    private static final int FF_X264_VIDEO_RECORDER = 4;
-    private static final int FF_FDK_AAC_AUDIO_RECORDER = 5;
-    private static final int FF_AV_RECORDER = 6;
-    private static final int FF_STREAM_MEDIA_PLAYER = 7;
+    private static final int FF_AV_RECORDER = 2;
+    private static final int FF_STREAM_MEDIA_PLAYER = 3;
 
     private int mSampleSelectedIndex = -1;
 
@@ -129,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
                 myPreviewSizeViewAdapter.safeNotifyItemChanged(position);
                 mSampleSelectedIndex = position;
                 switch (position) {
-//                    case FF_ANATIVE_WINDOWS_EXAMPLE:
-//                        startActivity(new Intent(MainActivity.this, NativeMediaPlayerActivity.class));
-//                        break;
+                    case FF_ANATIVE_WINDOWS_EXAMPLE:
+                        startActivity(new Intent(MainActivity.this, NativeMediaPlayerActivity.class));
+                        break;
                     case FF_OPENGLES_EXAMPLE:
                         startActivity(new Intent(MainActivity.this, GLMediaPlayerActivity.class));
                         break;
@@ -147,12 +139,12 @@ public class MainActivity extends AppCompatActivity {
 //                    case FF_FDK_AAC_AUDIO_RECORDER:
 //                        startActivity(new Intent(MainActivity.this, AudioRecorderActivity.class));
 //                        break;
-//                    case FF_AV_RECORDER:
-//                        startActivity(new Intent(MainActivity.this, AVRecorderActivity.class));
-//                        break;
-//                    case FF_STREAM_MEDIA_PLAYER:
-//                        startActivity(new Intent(MainActivity.this, StreamMediaPlayerActivity.class));
-//                        break;
+                    case FF_AV_RECORDER:
+                        startActivity(new Intent(MainActivity.this, AVRecorderActivity.class));
+                        break;
+                    case FF_STREAM_MEDIA_PLAYER:
+                        startActivity(new Intent(MainActivity.this, StreamMediaPlayerActivity.class));
+                        break;
                     default:
                         break;
                 }

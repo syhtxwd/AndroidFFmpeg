@@ -3,6 +3,7 @@
 //
 
 #include "FFMediaPlayer.h"
+#include <render/video/NativeRender.h>
 #include <render/video/VideoGLRender.h>
 #include <render/audio/OpenSLRender.h>
 #include "LogUtil.h"
@@ -18,6 +19,9 @@ void FFMediaPlayer::Init(JNIEnv *jniEnv, jobject obj, char *url, int videoRender
 
     if(videoRenderType == VIDEO_RENDER_OPENGL) {
         m_VideoDecoder->SetVideoRender(VideoGLRender::GetInstance());
+    } else if (videoRenderType == VIDEO_RENDER_ANWINDOW) {
+        m_VideoRender = new NativeRender(jniEnv, surface);
+        m_VideoDecoder->SetVideoRender(m_VideoRender);
     }
     m_AudioRender = new OpenSLRender();
     m_AudioDecoder->SetAudioRender(m_AudioRender);
@@ -33,10 +37,10 @@ void FFMediaPlayer::UnInit()
         m_VideoDecoder = nullptr;
     }
 
-//    if(m_VideoRender) {
-//        delete m_VideoRender;
-//        m_VideoRender = nullptr;
-//    }
+    if(m_VideoRender) {
+        delete m_VideoRender;
+        m_VideoRender = nullptr;
+    }
 
     if(m_AudioDecoder) {
         delete m_AudioDecoder;

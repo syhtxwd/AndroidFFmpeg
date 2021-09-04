@@ -21,6 +21,7 @@ include_directories(
 link_directories(
         ${jnilibs}/${ANDROID_ABI})
 
+
 file(GLOB src-files
         ${CMAKE_SOURCE_DIR}/*.cpp
         ${CMAKE_SOURCE_DIR}/util/*.cpp
@@ -29,6 +30,9 @@ file(GLOB src-files
         ${CMAKE_SOURCE_DIR}/player/render/video/*.cpp
         ${CMAKE_SOURCE_DIR}/player/render/audio/*.cpp
         ${CMAKE_SOURCE_DIR}/recorder/SingleVideoRecorder.cpp
+        ${CMAKE_SOURCE_DIR}/recorder/MediaRecorderContext.cpp
+        ${CMAKE_SOURCE_DIR}/recorder/GLCameraRender.cpp
+        ${CMAKE_SOURCE_DIR}/recorder/MediaRecorder.cpp
         )
 
 add_library(${libname}
