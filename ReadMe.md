@@ -9,16 +9,16 @@
 - 利用AudioRecorder采集PCM音频，利用ffmpeg编码生成aac文件
 
 
-### 整理层次图
+- ### 整理层次图
 
     ![解码流程图](./doc/整体层次图/entirety.png)
 
 
-### 解码流程图
+- ### 解码流程图
 
     ![解码流程图](./doc/便解码流程图/decoder.png)
 
 
-### opensl es基本流程
+- ### opensl es基本流程
 
     ![opensl_es](./doc/其他/opensl_es.png)
