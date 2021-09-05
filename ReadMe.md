@@ -33,3 +33,8 @@
 - ### opensl es基本流程
 
     ![opensl_es](./doc/其他/opensl_es.png)
+
+
+- ### 效果图
+
+    ![result](./doc/效果图/gif.gif)
