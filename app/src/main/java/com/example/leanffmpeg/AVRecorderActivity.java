@@ -326,11 +326,11 @@ public class AVRecorderActivity extends AppCompatActivity implements Camera2Fram
                 File file = new File(mOutUrl);
                 Uri uri = null;
                 if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
-                    uri = FileProvider.getUriForFile(AVRecorderActivity.this,"com.byteflow.learnffmpeg.fileprovider", file);
+                    uri = FileProvider.getUriForFile(AVRecorderActivity.this,"com.example.leanffmpeg.fileprovider", file);
                 }else {
                     uri = Uri.fromFile(file);
                 }
-                //Toast.makeText(AVRecorderActivity.this, uri.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(AVRecorderActivity.this, uri.toString(),Toast.LENGTH_LONG).show();
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 intent.setDataAndType(uri, "video/*");
